@@ -1,6 +1,6 @@
 use deku::prelude::*;
-
-#[derive(Debug, PartialEq, DekuRead, DekuWrite)]
+use serde::{Serialize, Deserialize};
+#[derive(Debug, PartialEq, DekuRead, DekuWrite, Serialize, Deserialize)]
 #[deku(type = "u8")]
 pub enum WSMessage {
     #[deku(id = "0x01")]
@@ -13,7 +13,7 @@ pub enum WSMessage {
     Frame,
 }
 
-#[derive(Debug, PartialEq, DekuRead, DekuWrite)]
+#[derive(Debug, PartialEq, DekuRead, DekuWrite, Serialize, Deserialize)]
 pub struct ConnectData {
     pub destination_port: u16,
     pub destination_address_count: u8,
@@ -25,7 +25,7 @@ impl ConnectData {
     pub fn new(destination_port: u16, destination_address: &str) -> ConnectData {
         let bytes = destination_address.as_bytes();
         ConnectData {
-            destination_port: destination_port,
+            destination_port,
             destination_address_count: bytes.len() as u8,
             destination_address: bytes.to_vec(),
         }

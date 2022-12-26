@@ -1,9 +1,8 @@
 use clap::{Parser, Subcommand};
 use color_eyre::Result;
 use log::LevelFilter;
-mod client;
-mod server;
-mod shared;
+use client;
+use server;
 
 extern crate pretty_env_logger;
 
@@ -28,7 +27,7 @@ async fn main() -> Result<()> {
         .try_init()?;
     let args = Cli::parse();
     match &args.command {
-        Commands::Client(args) => client::main(args).await,
-        Commands::Server(args) => server::main(args).await,
+        Commands::Client(args) => client::launch(args).await,
+        Commands::Server(args) => server::launch(args).await,
     }
 }
