@@ -687,18 +687,10 @@ dependencies = [
  "clap",
  "client",
  "color-eyre",
- "deku",
- "futures-util",
- "http-body-util",
- "hyper",
- "hyper-tungstenite",
  "log",
  "pretty_env_logger",
- "serde",
- "serde_json",
  "server",
  "tokio",
- "tokio-tungstenite",
 ]
 
 [[package]]
@@ -1071,18 +1063,9 @@ name = "shared"
 version = "0.1.0"
 dependencies = [
  "clap",
- "color-eyre",
  "deku",
- "futures-util",
- "http-body-util",
- "hyper",
- "hyper-tungstenite",
- "log",
- "pretty_env_logger",
  "serde",
  "serde_json",
- "tokio",
- "tokio-tungstenite",
 ]
 
 [[package]]
